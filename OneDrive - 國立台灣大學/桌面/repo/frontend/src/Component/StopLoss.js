@@ -1,4 +1,3 @@
-import { Select } from 'antd';
 import 'antd/dist/antd.css';
 //import axios from 'axios';
 import { useEffect, useState } from 'react';
@@ -16,11 +15,11 @@ const StopLoss = ({ setStopLoss, setClickCheck }) => {
       return(
         <div>
             <Space className='stopLoss'>
-                <h1>停損點</h1>
+                <h3>停損點</h3>
                 <InputNumber 
                 min={0} 
                 max={100} 
-                defaultValue={3} 
+                defaultValue={100} 
                 onChange={onChange} />
                 <p>%</p>
             </Space>

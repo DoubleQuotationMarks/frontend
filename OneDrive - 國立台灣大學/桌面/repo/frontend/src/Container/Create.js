@@ -1,25 +1,25 @@
+import '../App.css'
 import Companies from '../Component/Company';
-import Indicators from '../Component/Indicators';
-import StopProfit from '../Component/StopProfit';
+import IndicatorNum from '../Component/IndicatorNum';
 import StopLoss from '../Component/StopLoss';
-import IndicatorNum from '../Component/IncicatorNum';
+import StopProfit from '../Component/StopProfit';
 import { Space, Button } from 'antd'
 import { useState } from 'react';
 
-const Create = ({ setCompany, setIndicator, setRate, setStopProfit, setStopLoss, setClickCheck, setMenuset, setClickCreate }) => {
+const Create = ({ indicator, str1, str2, setCompany, setNum1, setNum2, setStopProfit, setStopLoss, setClickCheck, setClickCreate, setClickInd, setCreateComplete, setWatchHistory }) => {
 
     return(
         <div className='create'>
             <Companies setCompany={setCompany} setClickCheck={setClickCheck} />
-            <Indicators setIndicator={setIndicator} setClickCheck={setClickCheck} />
-            <IndicatorNum setRate={setRate} setClickCheck={setClickCheck} />
-            <StopProfit setStopProfit={setStopProfit} setClickCheck={setClickCheck} />
+            <IndicatorNum str1={str1} str2={str2} setNum1={setNum1} setNum2={setNum2} setClickCheck={setClickCheck} />
             <StopLoss setStopLoss={setStopLoss} setClickCheck={setClickCheck} />
-            <Button onClick={()=>{setClickCheck(true); setClickCreate(false);}}>確定</Button>
-            <Button onClick={()=>{setClickCheck(false); setMenuset(true); setClickCreate(false);}}>回上頁</Button>
+            <StopProfit setStopProfit={setStopProfit} setClickCheck={setClickCheck} />
+            <Button onClick={()=>{setClickCheck(true); setClickCreate(false); setClickInd(false);}}>進行回測</Button>
+            <Button onClick={()=>{setCreateComplete(true); setClickCreate(false); setClickInd(false);}}>建立策略</Button>
+            <Button onClick={()=>{setWatchHistory(true); setClickCreate(false); setClickInd(false);}}>觀看歷史策略</Button>
         </div>
     )
 }
 
 export default Create
-//
+// <IndicatorNum setRate={setRate} setClickCheck={setClickCheck} />

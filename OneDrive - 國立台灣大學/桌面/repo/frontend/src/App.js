@@ -3,43 +3,95 @@ import MenuSet from './Container/MenuSet'
 import Create from './Container/Create'
 import Profit_Loss from './Container/Profit_Loss'
 import Deal from './Container/Deal'
+import DealInfo from './Container/DealInfo'
+import ChooseInd from './Container/ChooseInd'
 import { useState } from 'react';
+import CreateComplete from './Container/CreateComplete';
+import WatchHistory from "./Container/WatchHistory";
 
 const App = () => {
 
   const [company, setCompany] = useState('台積電')
   const [indicator, setIndicator] = useState('RSI')
-  const [rate, setRate] = useState(3)
-  const [stopProfit, setStopProfit] = useState(3)
-  const [stopLoss, setStopLoss] = useState(3)
+  const [num1, setNum1] = useState(5)
+  const [num2, setNum2] = useState(30)
+  const [stopProfit, setStopProfit] = useState(0)
+  const [stopLoss, setStopLoss] = useState(100)
+  const [str1, setStr1] = useState('設定長度(2~25): ');
+  const [str2, setStr2] = useState('設定閾值(10~40):');
+  const [userID, setUserID] = useState('');
+
   const [menuset, setMenuset] = useState(true)
   const [clickDeal, setClickDeal] = useState(false)
   const [clickCreate, setClickCreate] = useState(false)
-  const [clickCheck, setClickCheck] = useState(false)
+  const [clickInd, setClickInd] = useState(false)         //選擇指標的確定鍵
+  const [clickCheck, setClickCheck] = useState(false)     //創建投資組合頁面的回測鍵
+  const [clickCompany, setClickCompany] = useState(false) //個股資訊頁面的選擇公司鍵
+  const [createComplete, setCreateComplete] = useState(false)//創建策略
+  const [watchHistory, setWatchHistory] = useState(false) //觀看歷史所設策略
+  
 
   return <>
     {menuset?<MenuSet setClickDeal={setClickDeal} setClickCreate={setClickCreate} setMenuset={setMenuset} />:<></>}
     {clickCreate?
-    <Create setCompany={setCompany}
-            setIndicator={setIndicator} 
-            setRate={setRate} 
-            setStopProfit={setStopProfit}
+    <ChooseInd setIndicator={setIndicator}
+               setStr1={setStr1}
+               setStr2={setStr2}
+               setClickInd={setClickInd}
+               setMenuset={setMenuset}
+               setClickCheck={setClickCheck} 
+               setClickCreate={setClickCreate} />:<></>}
+    {clickInd?
+    <Create indicator={indicator}
+            str1={str1}
+            str2={str2}
+            setCompany={setCompany}
+            setNum1={setNum1}
+            setNum2={setNum2}
+            setStopProft={setStopProfit} 
             setStopLoss={setStopLoss}
             setClickCheck={setClickCheck}
-            setMenuset={setMenuset} 
-            setClickCreate={setClickCreate} />: <></>}
+            setClickCreate={setClickCreate}
+            setClickInd={setClickInd}
+            setCreateComplete={setCreateComplete}
+            setWatchHistory={setWatchHistory} />: <></>}
     {clickCheck?
     <Profit_Loss company={company}
                  indicator={indicator}
-                 rate={rate}
+                 num1={num1}
+                 num2={num2}
                  stopProfit={stopProfit}
                  stopLoss={stopLoss} 
                  setClickCheck={setClickCheck}
                  setClickCreate={setClickCreate} />:<></>}
+    {createComplete?
+    <CreateComplete company={company}
+                    indicator={indicator} 
+                    num1={num1}
+                    num2={num2}
+                    stopProfit={stopProfit}
+                    stopLoss={stopLoss}
+                    setClickCreate={setClickCreate}
+                    setCreateComplete={setCreateComplete} />:<></>}
+    {watchHistory?
+    <WatchHistory userID={userID}
+                  setWatchHistory={setWatchHistory}
+                  setClickCreate={setClickCreate} />:<></>}
     {clickDeal?
-    <Deal setMenuset={setMenuset}
+    <Deal setCompany={setCompany}
+          setClickCompany={setClickCompany}
+          setMenuset={setMenuset}
           setClickDeal={setClickDeal} />:<></>}
+    {clickCompany?
+    <DealInfo company={company} />:<></>}
   </>
 }
 
 export default App;
+/*<Create setCompany={setCompany}
+            setIndicator={setIndicator} 
+            setRate={setRate} 
+            setStopLoss={setStopLoss}
+            setClickCheck={setClickCheck}
+            setMenuset={setMenuset} 
+            setClickCreate={setClickCreate} />: <></>*/

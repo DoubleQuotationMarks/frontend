@@ -7,12 +7,30 @@ import { Space } from 'antd';
 
 const { Option } = Select;
 
-const Indicators = ({ setIndicator, setClickCheck }) => {
+const indicators = ['RSI', 'MACD', 'KD', 'EMA'];
 
-    const onChange = (value) => {
+const Indicators = ({ setIndicator, setStr1, setStr2, setClickCheck }) => {
+    
+    const decide = (indicator) => {
+        if (indicator == 'RSI'){
+          setStr1('設定長度(2~25): ');
+          setStr2('設定閾值(10~40): ');
+        }
+        else if (indicator == 'KD'){
+          setStr1('設定長度(2~30): ');
+          setStr2('設定閾值(10~40): ');
+        }
+        else{
+          setStr1('設定長線長度(1~90): ');
+          setStr2('設定短線長度(1~90): ');
+        }
+    }
+
+    const onChangeIndicator = (value) => {
         console.log(`selected ${value}`);
-        setIndicator(value)
-        setClickCheck(false)
+        setIndicator(value);
+        decide(value);
+        setClickCheck(false);
     }
       
     const onSearch = (val) => {
@@ -22,26 +40,19 @@ const Indicators = ({ setIndicator, setClickCheck }) => {
     return(
         <div>
             <Space className='indicators'>
-                <h1>選擇指標</h1>
-                <Select
-                showSearch
-                style={{ width: 200 }}
-                defaultValue={"RSI"}
-                onChange={onChange}
-                onSearch={onSearch}
-                filterOption={(input, option) =>
-                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                }
-                >
-                <Option value="RSI">RSI</Option>
-                <Option value="MACD">MACD</Option>
-                <Option value="KD">KD</Option>
-                <Option value="三大法人買超">三大法人買超</Option>
+                <h3>開關單指標</h3>
+                <Select style={{ width: 120 }} 
+                        onChange={onChangeIndicator}
+                        filterOption={(input, option) =>
+                            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                        }>
+                    {indicators.map(indicator => (
+                        <Option key={indicator}>{indicator}</Option>
+                    ))}
                 </Select>
             </Space>
         </div>
     );
-
 }
 
 
@@ -51,3 +62,16 @@ export default Indicators
 //    console.log(`selected ${value}`);
 //}
 //<InputNumber min={0} max={100} defaultValue={3} onChange={onChangeRate} />
+/*  const onChangeIndNum = (value) => {
+        console.log(`selected ${value}`);
+        setIndNum(value);
+        if (indName == 'RSI')
+            setRate(value);
+        else
+            setRate(0);
+        setClickCheck(false);
+    }
+    <InputNumber 
+                    min={ind[1]} 
+                    max={ind[2]} 
+                    onChange={onChangeIndNum} />*/

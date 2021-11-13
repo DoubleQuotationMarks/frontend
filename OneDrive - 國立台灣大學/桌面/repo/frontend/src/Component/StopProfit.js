@@ -16,11 +16,11 @@ const StopProfit = ({ setStopProfit, setClickCheck }) => {
       return(
         <div>
             <Space className='stopProfit'>
-                <h1>停利點</h1>
+                <h3>停利點</h3>
                 <InputNumber 
                 min={0} 
                 max={100} 
-                defaultValue={3} 
+                defaultValue={0} 
                 onChange={onChange} />
                 <p>%</p>
             </Space>

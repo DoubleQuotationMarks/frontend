@@ -30,13 +30,10 @@ const Companies = ({ setCompany, setClickCheck }) => {
     return(
         <div>
             <Space className='company'>
-                <h1>選擇個股</h1>
+                <h3>選擇個股</h3>
                 <Select
-                showSearch
                 style={{ width: 200 }}
-                defaultValue={"台積電"}
                 onChange={onChange}
-                onSearch={onSearch}
                 filterOption={(input, option) =>
                     option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                 }
