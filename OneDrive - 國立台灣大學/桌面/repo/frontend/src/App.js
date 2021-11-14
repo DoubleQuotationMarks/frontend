@@ -28,7 +28,7 @@ const App = () => {
   const [LR, setLR] = useState(true)
   const [login, setLogin] = useState(false)
   const [register, setRegister] = useState(false)
-  const [menuset, setMenuset] = useState(true)
+  const [menuset, setMenuset] = useState(false)
   const [clickDeal, setClickDeal] = useState(false)
   const [clickCreate, setClickCreate] = useState(false)
   const [clickInd, setClickInd] = useState(false)         //選擇指標的確定鍵
