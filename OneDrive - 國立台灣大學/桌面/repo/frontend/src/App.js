@@ -39,7 +39,17 @@ const App = () => {
   
 
   return <>
-    {menuset?<MenuSet setClickDeal={setClickDeal} setClickCreate={setClickCreate} setMenuset={setMenuset} />:<></>}
+    {LR?
+    <Login_Register setUserID={setUserID} setPassword={setPassword} setLogin={setLogin} setRegister={setRegister} setLR={setLR} />
+    :<></>}
+    {login?
+    <Login_Succeed userID={userID} password={password} setLogin={setLogin} setMenuset={setMenuset} setLR={setLR} />
+    :<></>}
+    {register?
+    <Register_Succeed userID={userID} password={password} setRegister={setLogin} setMenuset={setMenuset} setLR={setLR} />
+    :<></>}
+    {menuset?<MenuSet setClickDeal={setClickDeal} setClickCreate={setClickCreate} setMenuset={setMenuset} />
+    :<></>}
     {clickCreate?
     <ChooseInd setIndicator={setIndicator}
                setStr1={setStr1}
