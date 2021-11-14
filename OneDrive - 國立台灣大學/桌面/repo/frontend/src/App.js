@@ -21,6 +21,9 @@ const App = () => {
   const [str2, setStr2] = useState('設定閾值(10~40):');
   const [userID, setUserID] = useState('');
 
+  const [LR, setLR] = useState(true)
+  const [login, setLogin] = useState(false)
+  const [register, setRegister] = useState(false)
   const [menuset, setMenuset] = useState(true)
   const [clickDeal, setClickDeal] = useState(false)
   const [clickCreate, setClickCreate] = useState(false)
