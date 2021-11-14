@@ -1,5 +1,6 @@
 import '../App.css'
 import { Space, Button } from 'antd'
+import User from '../Component/User'
 
 const Login_Register = ( { setUserID, setPassword, setLogin, setRegister, setLR } ) => {
 

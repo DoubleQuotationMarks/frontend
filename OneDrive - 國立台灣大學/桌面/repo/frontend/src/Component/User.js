@@ -1,7 +1,7 @@
 import 'antd/dist/antd.css';
 //import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { InputNumber } from 'antd';
+import { Input } from 'antd';
 import { Space } from 'antd';
 
 const User = ({ setUserID, setPassword }) => {

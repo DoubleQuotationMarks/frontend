@@ -1,9 +1,9 @@
 import '../App.css'
 import { Space, Button } from 'antd'
 import { useState } from 'react'
-import { Register } from "../Component/Register";
+import Register from "../Component/Register";
 
-const Register_Succeed = ( { userID, password, setRegister, setMenuset } ) => {
+const Register_Succeed = ( { userID, password, setRegister, setMenuset, setLR } ) => {
 
     const [registerStr, setRegisterStr] = useState('')
 
