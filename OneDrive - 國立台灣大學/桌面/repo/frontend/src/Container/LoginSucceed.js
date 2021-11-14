@@ -3,7 +3,7 @@ import { Space, Button } from 'antd'
 import { useState } from 'react'
 import { Login } from "../Component/Login";
 
-const Login_Succeed = ( { userID, password, setLogin, setMenuset } ) => {
+const Login_Succeed = ( { userID, password, setLogin, setMenuset, setLR } ) => {
 
     const [loginStr, setLoginStr] = useState('')
 

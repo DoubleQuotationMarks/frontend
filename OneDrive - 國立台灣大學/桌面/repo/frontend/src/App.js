@@ -8,6 +8,9 @@ import ChooseInd from './Container/ChooseInd'
 import { useState } from 'react';
 import CreateComplete from './Container/CreateComplete';
 import WatchHistory from "./Container/WatchHistory";
+import Login_Register from './Container/Login_Register';
+import Login_Succeed from './Container/LoginSucceed';
+import Register_Succeed from './Container/RegisterSucceed'
 
 const App = () => {
 
@@ -20,6 +23,7 @@ const App = () => {
   const [str1, setStr1] = useState('設定長度(2~25): ');
   const [str2, setStr2] = useState('設定閾值(10~40):');
   const [userID, setUserID] = useState('');
+  const [password, setPassword] = useState('');
 
   const [LR, setLR] = useState(true)
   const [login, setLogin] = useState(false)
@@ -98,3 +102,12 @@ export default App;
             setClickCheck={setClickCheck}
             setMenuset={setMenuset} 
             setClickCreate={setClickCreate} />: <></>*/
+/*{LR?
+   <Login_Register setUserID={setUserID} setPassword={setPassword} setLogin={setLogin} setRegister={setRegister} setLR={setLR} />
+   :<></>}
+  {Login?
+   <Login_Succeed userID={userID} password={password} setLogin={setLogin} setMenuset={setMenuset} setLR={setLR} />
+   :<></>}
+  {Register?
+   <Register_Succeed userID={userID} password={password} setRegister={setLogin} setMenuset={setMenuset} setLR={setLR} />
+   :<></>}*/
